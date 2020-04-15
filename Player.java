@@ -5,7 +5,13 @@ class Player
 	private String name;
 	private int wins;
 
-	// CONTRUCTOR //
+	// CONTRUCTORS //
+
+	Player()
+	{
+		setName(null);
+		setWins(0);
+	}
 
 	Player(String name)
 	{
@@ -36,6 +42,11 @@ class Player
 	}
 
 	// METHODS //
+
+	public void addWin()
+	{
+		wins++;
+	}
 
 	public void display()
 	{

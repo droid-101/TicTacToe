@@ -14,5 +14,10 @@ class PlayerTest
 		System.out.println(player.getWins());
 
 		player.display();
+
+		Player player2 = new Player();
+		player2.display();
+		player2.addWin();
+		player2.display();
 	}
 }
