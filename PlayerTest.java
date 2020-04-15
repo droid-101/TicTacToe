@@ -1,3 +1,10 @@
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * @Author: Kyle Pinto
+ * @Date: Tuesday, April 14, 2020.
+ *
+ * This program tests the features of the Player class.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 class PlayerTest
 {
 	public static void main(String [] args)
