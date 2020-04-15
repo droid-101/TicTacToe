@@ -19,5 +19,7 @@ class PlayerTest
 		player2.display();
 		player2.addWin();
 		player2.display();
+
+		System.out.println(player.nextMove());
 	}
 }

@@ -1,9 +1,15 @@
+import java.util.Scanner;
+
 class Player
 {
-	// VARIABLES //
+	// INSTANCE VARIABLES //
 
 	private String name;
 	private int wins;
+
+	// STATIC VARIABLES //
+
+	Scanner userInput = new Scanner(System.in);
 
 	// CONTRUCTORS //
 
@@ -46,6 +52,42 @@ class Player
 	public void addWin()
 	{
 		wins++;
+	}
+
+	public int nextMove()
+	{
+		int square = 0;
+		String input = null;
+
+		do
+		{
+			System.out.printf("%s: select a square (1-9) for your next move: ", name);
+			input = userInput.nextLine();
+
+			if (input.length() == 0)
+			{
+				System.out.println("ERROR: No input provided");
+				continue;
+			}
+
+			try
+			{
+				square = Integer.parseInt(input);
+			}
+			catch (NumberFormatException exeption)
+			{
+				System.out.println("ERROR: Input is not an integer");
+				continue;
+			}
+
+			if (square < 1 || square > 9)
+			{
+				System.out.println("ERROR: Input is not between 1 and 9");
+			}
+		}
+		while (square < 1 || square > 9);
+
+		return square;
 	}
 
 	public void display()
