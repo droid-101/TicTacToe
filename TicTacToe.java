@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class TicTacToe
 {
     public static void main(String [] arg)
@@ -10,20 +12,25 @@ class TicTacToe
         int playerTwoMove;
         boolean playerOneTurn = true;
         boolean playerTwoTurn = false;
+        String player1Name = null;
+        String player2Name = null;
 
-        Player playerOne = new Player("Bob");
-        Player playerTwo = new Player("Joe");
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Player 1 please enter your name:");
+        player1Name = input.next();
+        System.out.println("Player 2 please enter your name:");
+        player2Name = input.next();
+
+        Player playerOne = new Player(player1Name);
+        Player playerTwo = new Player(player2Name);
 
         char [] cellLetters = new char[9];
-        cellLetters[0] = '1';
-        cellLetters[1] = '2';
-        cellLetters[2] = '3';
-        cellLetters[3] = '4';
-        cellLetters[4] = '5';
-        cellLetters[5] = '6';
-        cellLetters[6] = '7';
-        cellLetters[7] = '8';
-        cellLetters[8] = '9';
+
+        for(int i = 0; i < 9; i++)
+        {
+            cellLetters[i] = (char)(i + 49);
+        }
 
         display(cellLetters);
 
@@ -33,7 +40,7 @@ class TicTacToe
             {
                 playerOneMove = playerOne.nextMove();
 
-                if (openCheck(cellLetters[playerOneMove - 1]) == true)
+                if (openCheck(cellLetters[playerOneMove - 1]))
                 {
                     cellLetters[playerOneMove - 1] = 'X';
                     display(cellLetters);
@@ -59,12 +66,12 @@ class TicTacToe
                 break;
 
                 case 1:
-                System.out.println("Player 1 wins!");
+                System.out.printf("%s wins!\n", playerOne.getName());
                 gameEnd = true;
                 break;
 
                 case 2:
-                System.out.println("Player 2 wins!");
+                System.out.printf("%s wins!\n", playerTwo.getName());
                 gameEnd = true;
                 break;
 
@@ -80,7 +87,7 @@ class TicTacToe
                 {
                     playerTwoMove = playerTwo.nextMove();
 
-                    if (openCheck(cellLetters[playerTwoMove - 1]) == true)
+                    if (openCheck(cellLetters[playerTwoMove - 1]))
                     {
                         cellLetters[playerTwoMove - 1] = 'O';
                         display(cellLetters);
@@ -96,9 +103,6 @@ class TicTacToe
                     }
                 }
 
-
-
-
                 gameStatus = winCheck(cellLetters);
 
                 switch (gameStatus)
@@ -108,12 +112,12 @@ class TicTacToe
                     break;
 
                     case 1:
-                    System.out.println("Player 1 wins!");
+                    System.out.printf("%s wins!\n", playerOne.getName());
                     gameEnd = true;
                     break;
 
                     case 2:
-                    System.out.println("Player 2 wins!");
+                    System.out.printf("%s wins!\n", playerTwo.getName());
                     gameEnd = true;
                     break;
 
@@ -125,8 +129,6 @@ class TicTacToe
             }
         }
     }
-
-
 
     public static void display(char [] cells)
     {
@@ -215,8 +217,6 @@ class TicTacToe
 
     public static boolean openCheck(char cellContent)
     {
-
-
         if (cellContent != 'X' && cellContent != 'O')
         {
             return true;
